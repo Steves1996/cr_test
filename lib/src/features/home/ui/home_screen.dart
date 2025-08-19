@@ -9,6 +9,8 @@ import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+
 
 @RoutePage<void>()
 class HomeScreen extends StatefulWidget {
@@ -81,11 +83,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
               SizedBox(height: 8.h),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return RateItem();
-                  },
+                child: Skeletonizer(
+                  enabled: false,
+                  enableSwitchAnimation: true,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return RateItem();
+                    },
+                  ),
                 ),
               ),
             ],

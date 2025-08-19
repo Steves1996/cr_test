@@ -19,5 +19,11 @@
   "rate_current_rate":"Taux actuel",
   "profile": "Mes Informations",
   "light_mode": "Light Mode",
-  "dark_mode": "Dark Mode"
+  "dark_mode": "Dark Mode",
+  "account_details": "Détails du compte",
+  "member_since": "Membre depuis",
+  "account_create": "Compte créé le",
+  "last_login": "Dernier connexion",
+  "session_recent": "Session recente",
+  "edit_profile": "Modifier mes informations"
 }

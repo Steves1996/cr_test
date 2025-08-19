@@ -22,12 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account_create":
+            MessageLookupByLibrary.simpleMessage("Compte créé le"),
+        "account_details":
+            MessageLookupByLibrary.simpleMessage("Détails du compte"),
         "app_title": MessageLookupByLibrary.simpleMessage("Crypto Rates"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "edit_profile":
+            MessageLookupByLibrary.simpleMessage("Modifier mes informations"),
         "empty_field":
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
         "header_real_time_exchange":
             MessageLookupByLibrary.simpleMessage("Réal Time Exchange"),
+        "last_login": MessageLookupByLibrary.simpleMessage("Dernier connexion"),
         "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "loadingDialog_content":
             MessageLookupByLibrary.simpleMessage("Chargement ..."),
@@ -42,12 +49,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Veuillez vous connecter pour avoir accès aux données"),
         "login_sign_up":
             MessageLookupByLibrary.simpleMessage("Créer un compte"),
+        "member_since": MessageLookupByLibrary.simpleMessage("Membre depuis"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "profile": MessageLookupByLibrary.simpleMessage("Mes Informations"),
         "rate_current_rate":
             MessageLookupByLibrary.simpleMessage("Taux actuel"),
         "rate_time_crypto": MessageLookupByLibrary.simpleMessage("Crypto:"),
         "rate_time_fiat": MessageLookupByLibrary.simpleMessage("Fiat: "),
-        "search": MessageLookupByLibrary.simpleMessage("Rechercher")
+        "search": MessageLookupByLibrary.simpleMessage("Rechercher"),
+        "session_recent":
+            MessageLookupByLibrary.simpleMessage("Session recente")
       };
 }

@@ -239,6 +239,66 @@ class I18n {
       args: [],
     );
   }
+
+  /// `Détails du compte`
+  String get account_details {
+    return Intl.message(
+      'Détails du compte',
+      name: 'account_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Membre depuis`
+  String get member_since {
+    return Intl.message(
+      'Membre depuis',
+      name: 'member_since',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compte créé le`
+  String get account_create {
+    return Intl.message(
+      'Compte créé le',
+      name: 'account_create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dernier connexion`
+  String get last_login {
+    return Intl.message(
+      'Dernier connexion',
+      name: 'last_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Session recente`
+  String get session_recent {
+    return Intl.message(
+      'Session recente',
+      name: 'session_recent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modifier mes informations`
+  String get edit_profile {
+    return Intl.message(
+      'Modifier mes informations',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {

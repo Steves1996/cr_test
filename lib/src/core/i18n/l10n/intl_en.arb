@@ -1,3 +1,29 @@
 {
+  "app_title": "Crypto Rates",
+"okay": "Okay",
+"loadingDialog_content": "Loading...",
+"empty_field": "This field is required",
+"search": "Search",
 
+
+"login_sign_in_to_crypto_rates": "Please log in to access the data",
+"login_email": "Email address",
+"login_password": "Password",
+"login_login": "Log in",
+"login_forgot_password": "Forgot your password?",
+"login_dont_have_account": "Don't have an account?",
+"login_sign_up": "Create an account",
+"header_real_time_exchange": "Real Time Exchange",
+"rate_time_crypto": "Crypto:",
+"rate_time_fiat": "Fiat: ",
+"rate_current_rate":"Current rate",
+"profile": "My Information",
+"light_mode": "Light Mode",
+"dark_mode": "Dark Mode",
+"account_details": "Account details",
+"member_since": "Member since",
+"account_create": "Account created on",
+"last_login": "Last login",
+"session_recent": "Recent session",
+"edit_profile": "Edit my information"
 }
