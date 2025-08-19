@@ -72,7 +72,7 @@ class DioService {
             await _secureStorage.clearAll();
 
             if (kDebugMode) {
-              print('Unauthorized: Token expired, redirecting to login page');
+              print('Unauthorized: Token expired, redirecting to auth page');
             }
 
             try {
@@ -80,12 +80,12 @@ class DioService {
                 //await _appRouter!.replaceAll([const LoginRoute()]);
               } else {
                 if (kDebugMode) {
-                  print('AppRouter not initialized, cannot navigate to login');
+                  print('AppRouter not initialized, cannot navigate to auth');
                 }
               }
             } catch (e) {
               if (kDebugMode) {
-                print('Error during navigation to login: $e');
+                print('Error during navigation to auth: $e');
               }
             }
           }

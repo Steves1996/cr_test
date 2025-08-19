@@ -7,7 +7,7 @@ class SourceProvider {
    static const String CameraProvider = "camera";
    static const String SplashProvider = "splash";
    static const String LampFormProvider = "lampForm";
-   static const String LoginProvider = "login";
+   static const String LoginProvider = "auth";
    static const String EquipmentDetailProvider = "equipmentDetails";
    static const String CompteurProvider = "compteur";
 }

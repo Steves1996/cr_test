@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     readLocalStorage();
     Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
-        //context.router.replaceAll([const LoginRoute()]);
+        context.router.replaceAll([const LoginRoute()]);
       }
     });
     super.initState();

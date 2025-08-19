@@ -9,6 +9,11 @@ get:
 	@echo "Getting dependencies..."
 	fvm dart pub get
 
+clean:
+	@echo "clean and get dependencies..."
+	flutter clean
+	flutter pub get
+
 codegen:
 	@echo "Generating code..."
 	fvm dart run build_runner build --delete-conflicting-outputs

@@ -162,7 +162,7 @@ class Button extends StatelessWidget {
             ),
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Dimens.doubleRadius),
+                borderRadius: BorderRadius.circular(Dimens.radius),
               ),
             ),
           ),
@@ -204,7 +204,7 @@ class Button extends StatelessWidget {
           elevation: const WidgetStatePropertyAll(0),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimens.doubleRadius),
+              borderRadius: BorderRadius.circular(Dimens.radius),
             ),
           ),
         ),
