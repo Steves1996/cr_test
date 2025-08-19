@@ -57,7 +57,13 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: MediaQuery.of(context).size.width * 0.25,
               ),
               const SizedBox(height: Dimens.doubleSpacing),
-              Center(child: LoadingAnimationWidget.discreteCircle(color: context.colorScheme.primary, size: 30)),
+              Center(
+                child: LoadingAnimationWidget.discreteCircle(
+                  color: context.colorScheme.primary,
+                  secondRingColor: context.colorScheme.onPrimary,
+                  size: 30,
+                ),
+              ),
 
               ///test my dark and light mode
 
