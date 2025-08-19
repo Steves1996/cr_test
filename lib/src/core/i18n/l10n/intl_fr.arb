@@ -3,6 +3,7 @@
   "okay": "Okay",
   "loadingDialog_content": "Chargement ...",
   "empty_field": "Ce champ est obligatoire",
+  "search": "Rechercher",
 
 
   "login_sign_in_to_crypto_rates": "Veuillez vous connecter pour avoir accès aux données",
@@ -11,5 +12,9 @@
   "login_login": "Connexion",
   "login_forgot_password": "Mot de passe oublié ?",
   "login_dont_have_account": "Vous n'avez pas de compte ? ",
-  "login_sign_up": "Créer un compte"
+  "login_sign_up": "Créer un compte",
+  "header_real_time_exchange": "Réal Time Exchange",
+  "rate_time_crypto": "Crypto:",
+  "rate_time_fiat": "Fiat: ",
+  "rate_current_rate":"Taux actuel"
 }

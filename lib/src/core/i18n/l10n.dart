@@ -90,6 +90,16 @@ class I18n {
     );
   }
 
+  /// `Rechercher`
+  String get search {
+    return Intl.message(
+      'Rechercher',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Veuillez vous connecter pour avoir accès aux données`
   String get login_sign_in_to_crypto_rates {
     return Intl.message(
@@ -155,6 +165,46 @@ class I18n {
     return Intl.message(
       'Créer un compte',
       name: 'login_sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Réal Time Exchange`
+  String get header_real_time_exchange {
+    return Intl.message(
+      'Réal Time Exchange',
+      name: 'header_real_time_exchange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crypto:`
+  String get rate_time_crypto {
+    return Intl.message(
+      'Crypto:',
+      name: 'rate_time_crypto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fiat: `
+  String get rate_time_fiat {
+    return Intl.message(
+      'Fiat: ',
+      name: 'rate_time_fiat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Taux actuel`
+  String get rate_current_rate {
+    return Intl.message(
+      'Taux actuel',
+      name: 'rate_current_rate',
       desc: '',
       args: [],
     );

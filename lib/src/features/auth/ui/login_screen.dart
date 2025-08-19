@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cr/generated/assets.dart';
 import 'package:cr/src/core/i18n/l10n.dart';
+import 'package:cr/src/core/routing/app_router.dart';
 import 'package:cr/src/shared/components/buttons/button.dart';
 import 'package:cr/src/shared/components/forms/input.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
@@ -130,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Button.primary(
                           title: I18n.of(context).login_login,
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white, fontSize: 14.sp),
-                          onPressed: () {},
+                          onPressed: ()=>context.router.push(HomeRoute()),
                         ),
                         SizedBox(height: 10.h),
                         TextButton(

@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_title": MessageLookupByLibrary.simpleMessage("Crypto Rates"),
         "empty_field":
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
+        "header_real_time_exchange":
+            MessageLookupByLibrary.simpleMessage("Réal Time Exchange"),
         "loadingDialog_content":
             MessageLookupByLibrary.simpleMessage("Chargement ..."),
         "login_dont_have_account": MessageLookupByLibrary.simpleMessage(
@@ -38,6 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Veuillez vous connecter pour avoir accès aux données"),
         "login_sign_up":
             MessageLookupByLibrary.simpleMessage("Créer un compte"),
-        "okay": MessageLookupByLibrary.simpleMessage("Okay")
+        "okay": MessageLookupByLibrary.simpleMessage("Okay"),
+        "rate_current_rate":
+            MessageLookupByLibrary.simpleMessage("Taux actuel"),
+        "rate_time_crypto": MessageLookupByLibrary.simpleMessage("Crypto:"),
+        "rate_time_fiat": MessageLookupByLibrary.simpleMessage("Fiat: "),
+        "search": MessageLookupByLibrary.simpleMessage("Rechercher")
       };
 }
