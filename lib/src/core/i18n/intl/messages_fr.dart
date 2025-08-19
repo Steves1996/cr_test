@@ -23,10 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_title": MessageLookupByLibrary.simpleMessage("Crypto Rates"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "empty_field":
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
         "header_real_time_exchange":
             MessageLookupByLibrary.simpleMessage("Réal Time Exchange"),
+        "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "loadingDialog_content":
             MessageLookupByLibrary.simpleMessage("Chargement ..."),
         "login_dont_have_account": MessageLookupByLibrary.simpleMessage(
@@ -41,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_sign_up":
             MessageLookupByLibrary.simpleMessage("Créer un compte"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
+        "profile": MessageLookupByLibrary.simpleMessage("Mes Informations"),
         "rate_current_rate":
             MessageLookupByLibrary.simpleMessage("Taux actuel"),
         "rate_time_crypto": MessageLookupByLibrary.simpleMessage("Crypto:"),

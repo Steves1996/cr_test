@@ -1,3 +1,4 @@
+import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:cr/src/shared/transalation/language/language.dart';
 import 'package:cr/src/shared/transalation/logic/bloc/language_cubit.dart';
 import 'package:cr/src/shared/transalation/logic/bloc/language_state.dart';
@@ -43,7 +44,7 @@ class CustomLanguageDropdown extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade300),
+              //border: Border.all(color: Colors.grey.shade300),
               borderRadius: BorderRadius.circular(8),
             ),
             child: DropdownButtonHideUnderline(
@@ -61,7 +62,7 @@ class CustomLanguageDropdown extends StatelessWidget {
                       children: [
                         Text(language.flag, style: const TextStyle(fontSize: 18)),
                         const SizedBox(width: 8),
-                        Text(language.name),
+                        Text(language.name,style: context.textTheme.bodyMedium?.copyWith(color: context.colorScheme.secondary),),
                       ],
                     ),
                   );

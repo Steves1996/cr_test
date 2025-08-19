@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cr/src/core/i18n/l10n.dart';
 import 'package:cr/src/features/home/ui/components/header_component.dart';
 import 'package:cr/src/features/home/ui/components/rate_time_component.dart';
+import 'package:cr/src/features/home/ui/modal/bottom_sheet_setting_modal.dart';
 import 'package:cr/src/features/home/ui/widgets/rate_item.dart';
 import 'package:cr/src/shared/components/forms/input.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
@@ -40,7 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              HeaderComponent(onPressed: () {}),
+              HeaderComponent(onPressed: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  backgroundColor: Colors.white,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+                  ),
+                  builder: (BuildContext context) {
+                    return const ClipRRect(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+                      child: BottomSheetSettingModal(),
+                    );
+                  },
+                );
+              }),
               SizedBox(height: 10.h),
               RateTimeComponent(
                 cryptoTime: '2025-08-19T00:00:03.302Z',

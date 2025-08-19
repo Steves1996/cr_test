@@ -37,9 +37,12 @@ class HeaderComponent extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(
-          onPressed: onPressed,
-          icon: Icon(IconsaxPlusLinear.setting, color: context.colorScheme.primary, size: 24.sp),
+        Container(
+          decoration: BoxDecoration(shape: BoxShape.circle, color: context.colorScheme.primary.withOpacity(0.1)),
+          child: IconButton(
+            onPressed: onPressed,
+            icon: Icon(IconsaxPlusLinear.setting, color: context.colorScheme.primary, size: 24.sp),
+          ),
         ),
       ],
     );

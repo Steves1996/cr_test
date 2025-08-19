@@ -68,20 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ///test my dark and light mode
 
               /*Text('text color',style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: context.colorScheme.onPrimary),),
-              BlocBuilder<ThemeCubit, ThemeState>(
-                builder: (context, state) {
-                  return IconButton(
-                    icon: Icon(
-                      state.isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      context.read<ThemeCubit>().toggleTheme();
-                    },
-                    tooltip: state.isDarkMode ? 'Mode clair' : 'Mode sombre',
-                  );
-                },
-              ),*/
+              */
             ],
           ),
         ),

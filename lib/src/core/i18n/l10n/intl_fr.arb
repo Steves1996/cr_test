@@ -16,5 +16,8 @@
   "header_real_time_exchange": "Réal Time Exchange",
   "rate_time_crypto": "Crypto:",
   "rate_time_fiat": "Fiat: ",
-  "rate_current_rate":"Taux actuel"
+  "rate_current_rate":"Taux actuel",
+  "profile": "Mes Informations",
+  "light_mode": "Light Mode",
+  "dark_mode": "Dark Mode"
 }

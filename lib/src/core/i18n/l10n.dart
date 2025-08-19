@@ -209,6 +209,36 @@ class I18n {
       args: [],
     );
   }
+
+  /// `Mes Informations`
+  String get profile {
+    return Intl.message(
+      'Mes Informations',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Mode`
+  String get light_mode {
+    return Intl.message(
+      'Light Mode',
+      name: 'light_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get dark_mode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {
