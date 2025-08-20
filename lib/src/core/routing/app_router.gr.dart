@@ -24,13 +24,7 @@ abstract class _$AppRouter extends RootStackRouter {
     LoginRoute.name: (routeData) {
       return AutoRoutePage<void>(
         routeData: routeData,
-        child: const LoginScreen(),
-      );
-    },
-    MainNavigationRouter.name: (routeData) {
-      return AutoRoutePage<void>(
-        routeData: routeData,
-        child: WrappedRoute(child: const MainNavigationWrapper()),
+        child: WrappedRoute(child: const LoginScreen()),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -72,20 +66,6 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MainNavigationWrapper]
-class MainNavigationRouter extends PageRouteInfo<void> {
-  const MainNavigationRouter({List<PageRouteInfo>? children})
-      : super(
-          MainNavigationRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MainNavigationRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

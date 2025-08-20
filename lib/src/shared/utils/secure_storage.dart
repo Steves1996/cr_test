@@ -1,23 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cr/src/features/auth/logic/model/login/login.model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorage {
   final FlutterSecureStorage storage;
   SecureStorage({FlutterSecureStorage? storage}) : storage = storage ?? const FlutterSecureStorage();
-
-  Future<void> setToken(String token) async {
-    await storage.write(key: tokenKey, value: token);
-  }
-
-  Future<String?> getToken() async {
-    return storage.read(key: tokenKey);
-  }
-
-  Future<void> clearToken() async {
-    await storage.delete(key: tokenKey);
-  }
 
   Future<void> setAccessToken(String token) async {
     await storage.write(key: accessTokenKey, value: token);
@@ -31,9 +20,22 @@ class SecureStorage {
     await storage.delete(key: accessTokenKey);
   }
 
+
+  Future<void> setRefreshToken(String refreshToken) async {
+    await storage.write(key: refreshTokenKey, value: refreshToken);
+  }
+
+  Future<String?> getRefreshToken() async {
+    return storage.read(key: refreshTokenKey);
+  }
+
+  Future<void> clearRefreshToken() async {
+    await storage.delete(key: refreshTokenKey);
+  }
+
   //user Id
-  Future<void> setUserId(String branchId) async {
-    await storage.write(key: useIdKey, value: branchId);
+  Future<void> setUserId(String userId) async {
+    await storage.write(key: useIdKey, value: userId);
   }
 
   Future<String?> getUserId() async {
@@ -45,24 +47,24 @@ class SecureStorage {
   }
 
   //user data
- /* Future<void> setUser(User user) async {
+  Future<void> setUser(LoginData user) async {
     final String userJson = jsonEncode(user.toJson());
     await storage.write(key: useDataKey, value: userJson);
   }
 
-  Future<User?> getUser() async {
+  Future<LoginData?> getUser() async {
     try {
       final String? userJson = await storage.read(key: useDataKey);
       if (userJson != null && userJson.isNotEmpty) {
         final Map<String, dynamic> userMap = jsonDecode(userJson);
-        return User.fromJson(userMap);
+        return LoginData.fromJson(userMap);
       }
       return null;
     } catch (e) {
       log('Erreur lors de la récupération de l\'utilisateur : $e');
       return null;
     }
-  }*/
+  }
 
   Future<void> clearUser() async {
     await storage.delete(key: useDataKey);
@@ -73,8 +75,8 @@ class SecureStorage {
     await storage.deleteAll();
   }
 
-  static const String tokenKey = 'ztf.token.key';
-  static const String accessTokenKey = 'ztf.token.key';
-  static const String useIdKey = 'ztf.employee.id.key';
+  static const String accessTokenKey = 'cr.token.key';
+  static const String refreshTokenKey = 'cr.token.key';
+  static const String useIdKey = 'cr.user.id.key';
   static const String useDataKey = 'ztf.user.key';
 }

@@ -25,5 +25,7 @@
   "account_create": "Compte créé le",
   "last_login": "Dernier connexion",
   "session_recent": "Session recente",
-  "edit_profile": "Modifier mes informations"
+  "edit_profile": "Modifier mes informations",
+  "empty_field_or_bad_email": "Veuillez entrer une adresse mail valide",
+  "login_success": "Connexion réussie"
 }

@@ -4,7 +4,6 @@ import 'package:cr/src/features/auth/ui/login_screen.dart';
 import 'package:cr/src/features/home/ui/home_screen.dart';
 import 'package:cr/src/features/profile/ui/profile_screen.dart';
 import 'package:cr/src/features/splashscreen/ui/splash_screen.dart';
-import 'package:cr/src/shared/features/main_navigation/ui/main_navigation_wrapper.dart';
 
 part 'app_router.gr.dart';
 

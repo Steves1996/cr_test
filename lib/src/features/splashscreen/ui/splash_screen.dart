@@ -4,6 +4,7 @@ import 'package:cr/src/core/routing/app_router.dart';
 import 'package:cr/src/core/theme/dimens.dart';
 import 'package:cr/src/core/theme/theme_logic/model/theme_state.dart';
 import 'package:cr/src/core/theme/theme_logic/theme_bloc/theme_cubit.dart';
+import 'package:cr/src/features/splashscreen/logic/cubit/splash_cubit.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:cr/src/shared/locator.dart';
 import 'package:cr/src/shared/utils/secure_storage.dart';
@@ -14,29 +15,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 @RoutePage<void>()
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget implements AutoRouteWrapper {
   const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (_) => SplashCubit())],
+      child: this,
+    );
+  }
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  SecureStorage secureStorage = locator<SecureStorage>();
-  String? token;
-
-  readLocalStorage() async {
-    token = await secureStorage.getUserId();
-  }
 
   @override
   void initState() {
-    readLocalStorage();
-    Future.delayed(const Duration(seconds: 5), () {
-      if (mounted) {
-        context.router.replaceAll([const LoginRoute()]);
-      }
-    });
+    context.read<SplashCubit>().verifyUserLogin();
     super.initState();
   }
 
@@ -44,32 +42,52 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                Assets.logosLogo,
-                height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.width * 0.25,
-              ),
-              const SizedBox(height: Dimens.doubleSpacing),
-              Center(
-                child: LoadingAnimationWidget.discreteCircle(
-                  color: context.colorScheme.primary,
-                  secondRingColor: context.colorScheme.onPrimary,
-                  size: 30,
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<SplashCubit, SplashState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (response) {
+                  Future.delayed(const Duration(seconds: 5), () {
+                    context.router.replaceAll([const HomeRoute()]);
+                  });
+                },
+                failure: (error) {
+                  Future.delayed(const Duration(seconds: 5), () {
+                    context.router.replaceAll([const LoginRoute()]);
+                  });
+                },
+              );
+            },
+          ),
+        ],
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  Assets.logosLogo,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.25,
                 ),
-              ),
+                const SizedBox(height: Dimens.doubleSpacing),
+                Center(
+                  child: LoadingAnimationWidget.discreteCircle(
+                    color: context.colorScheme.primary,
+                    secondRingColor: context.colorScheme.onPrimary,
+                    size: 30,
+                  ),
+                ),
 
-              ///test my dark and light mode
+                ///test my dark and light mode
 
-              /*Text('text color',style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: context.colorScheme.onPrimary),),
+                /*Text('text color',style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: context.colorScheme.onPrimary),),
               */
-            ],
+              ],
+            ),
           ),
         ),
       ),

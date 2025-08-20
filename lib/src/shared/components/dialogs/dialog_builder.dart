@@ -1,8 +1,8 @@
-
 import 'package:cr/src/core/i18n/l10n.dart';
 import 'package:cr/src/core/theme/dimens.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoadingDialog {
   static bool _isVisible = false;
@@ -32,7 +32,12 @@ class LoadingDialog {
                       child: CircularProgressIndicator.adaptive(),
                     ),
                     const SizedBox(width: Dimens.spacing),
-                    Expanded(child: Text(I18n.of(context).loadingDialog_content)),
+                    Expanded(
+                      child: Text(
+                        I18n.of(context).loadingDialog_content,
+                        style: context.textTheme.bodyMedium?.copyWith(color: context.colorScheme.primary, fontSize: 13.sp),
+                      ),
+                    ),
                   ],
                 ),
               ),

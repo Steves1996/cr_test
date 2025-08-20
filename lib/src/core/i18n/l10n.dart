@@ -299,6 +299,26 @@ class I18n {
       args: [],
     );
   }
+
+  /// `Veuillez entrer une adresse mail valide`
+  String get empty_field_or_bad_email {
+    return Intl.message(
+      'Veuillez entrer une adresse mail valide',
+      name: 'empty_field_or_bad_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connexion réussie`
+  String get login_success {
+    return Intl.message(
+      'Connexion réussie',
+      name: 'login_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {

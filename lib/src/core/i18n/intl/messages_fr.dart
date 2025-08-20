@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Modifier mes informations"),
         "empty_field":
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
+        "empty_field_or_bad_email": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer une adresse mail valide"),
         "header_real_time_exchange":
             MessageLookupByLibrary.simpleMessage("Réal Time Exchange"),
         "last_login": MessageLookupByLibrary.simpleMessage("Dernier connexion"),
@@ -49,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Veuillez vous connecter pour avoir accès aux données"),
         "login_sign_up":
             MessageLookupByLibrary.simpleMessage("Créer un compte"),
+        "login_success":
+            MessageLookupByLibrary.simpleMessage("Connexion réussie"),
         "member_since": MessageLookupByLibrary.simpleMessage("Membre depuis"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "profile": MessageLookupByLibrary.simpleMessage("Mes Informations"),
