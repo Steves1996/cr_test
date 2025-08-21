@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_details":
             MessageLookupByLibrary.simpleMessage("Détails du compte"),
         "app_title": MessageLookupByLibrary.simpleMessage("Crypto Rates"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Annuler"),
+        "confirmation": MessageLookupByLibrary.simpleMessage("Confirmation"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("Modifier mes informations"),
@@ -34,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
         "empty_field_or_bad_email": MessageLookupByLibrary.simpleMessage(
             "Veuillez entrer une adresse mail valide"),
+        "error_loading_profile": MessageLookupByLibrary.simpleMessage(
+            "Erreur lors du chargement du profil"),
         "header_real_time_exchange":
             MessageLookupByLibrary.simpleMessage("Réal Time Exchange"),
         "last_login": MessageLookupByLibrary.simpleMessage("Dernier connexion"),
@@ -60,7 +64,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Taux actuel"),
         "rate_time_crypto": MessageLookupByLibrary.simpleMessage("Crypto:"),
         "rate_time_fiat": MessageLookupByLibrary.simpleMessage("Fiat: "),
+        "retry": MessageLookupByLibrary.simpleMessage("Essayer"),
         "search": MessageLookupByLibrary.simpleMessage("Rechercher"),
+        "seeting_confirm_logout": MessageLookupByLibrary.simpleMessage(
+            "Est-vous sûre de vouloir vous déconnecter ?"),
+        "seeting_log_out": MessageLookupByLibrary.simpleMessage("J\'accepte"),
         "session_recent":
             MessageLookupByLibrary.simpleMessage("Session recente")
       };

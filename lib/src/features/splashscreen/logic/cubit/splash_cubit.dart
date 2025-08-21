@@ -1,5 +1,4 @@
-import 'package:cr/src/features/auth/logic/model/login/login.model.dart';
-import 'package:cr/src/features/auth/logic/repository/login.repository.dart';
+
 import 'package:cr/src/shared/locator.dart';
 import 'package:cr/src/shared/utils/secure_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

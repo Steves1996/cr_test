@@ -30,13 +30,13 @@ abstract class _$AppRouter extends RootStackRouter {
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<void>(
         routeData: routeData,
-        child: const ProfileScreen(),
+        child: WrappedRoute(child: const ProfileScreen()),
       );
     },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<void>(
         routeData: routeData,
-        child: const SplashScreen(),
+        child: WrappedRoute(child: const SplashScreen()),
       );
     },
   };

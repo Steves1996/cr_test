@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'not_login_cubit.dart';
+part of 'logout_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$NotLoginState {
+mixin _$LogoutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -43,85 +43,85 @@ mixin _$NotLoginState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NotLoginInitial value) initial,
-    required TResult Function(_NotLoginLoading value) loading,
-    required TResult Function(_NotLoginSucess value) success,
-    required TResult Function(_NotLoginFailed value) failure,
+    required TResult Function(_LogoutInitial value) initial,
+    required TResult Function(_LogoutLoading value) loading,
+    required TResult Function(_LogoutSucess value) success,
+    required TResult Function(_LogoutFailed value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NotLoginInitial value)? initial,
-    TResult? Function(_NotLoginLoading value)? loading,
-    TResult? Function(_NotLoginSucess value)? success,
-    TResult? Function(_NotLoginFailed value)? failure,
+    TResult? Function(_LogoutInitial value)? initial,
+    TResult? Function(_LogoutLoading value)? loading,
+    TResult? Function(_LogoutSucess value)? success,
+    TResult? Function(_LogoutFailed value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NotLoginInitial value)? initial,
-    TResult Function(_NotLoginLoading value)? loading,
-    TResult Function(_NotLoginSucess value)? success,
-    TResult Function(_NotLoginFailed value)? failure,
+    TResult Function(_LogoutInitial value)? initial,
+    TResult Function(_LogoutLoading value)? loading,
+    TResult Function(_LogoutSucess value)? success,
+    TResult Function(_LogoutFailed value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotLoginStateCopyWith<$Res> {
-  factory $NotLoginStateCopyWith(
-          NotLoginState value, $Res Function(NotLoginState) then) =
-      _$NotLoginStateCopyWithImpl<$Res, NotLoginState>;
+abstract class $LogoutStateCopyWith<$Res> {
+  factory $LogoutStateCopyWith(
+          LogoutState value, $Res Function(LogoutState) then) =
+      _$LogoutStateCopyWithImpl<$Res, LogoutState>;
 }
 
 /// @nodoc
-class _$NotLoginStateCopyWithImpl<$Res, $Val extends NotLoginState>
-    implements $NotLoginStateCopyWith<$Res> {
-  _$NotLoginStateCopyWithImpl(this._value, this._then);
+class _$LogoutStateCopyWithImpl<$Res, $Val extends LogoutState>
+    implements $LogoutStateCopyWith<$Res> {
+  _$LogoutStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$NotLoginInitialImplCopyWith<$Res> {
-  factory _$$NotLoginInitialImplCopyWith(_$NotLoginInitialImpl value,
-          $Res Function(_$NotLoginInitialImpl) then) =
-      __$$NotLoginInitialImplCopyWithImpl<$Res>;
+abstract class _$$LogoutInitialImplCopyWith<$Res> {
+  factory _$$LogoutInitialImplCopyWith(
+          _$LogoutInitialImpl value, $Res Function(_$LogoutInitialImpl) then) =
+      __$$LogoutInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NotLoginInitialImplCopyWithImpl<$Res>
-    extends _$NotLoginStateCopyWithImpl<$Res, _$NotLoginInitialImpl>
-    implements _$$NotLoginInitialImplCopyWith<$Res> {
-  __$$NotLoginInitialImplCopyWithImpl(
-      _$NotLoginInitialImpl _value, $Res Function(_$NotLoginInitialImpl) _then)
+class __$$LogoutInitialImplCopyWithImpl<$Res>
+    extends _$LogoutStateCopyWithImpl<$Res, _$LogoutInitialImpl>
+    implements _$$LogoutInitialImplCopyWith<$Res> {
+  __$$LogoutInitialImplCopyWithImpl(
+      _$LogoutInitialImpl _value, $Res Function(_$LogoutInitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$NotLoginInitialImpl implements _NotLoginInitial {
-  _$NotLoginInitialImpl();
+class _$LogoutInitialImpl implements _LogoutInitial {
+  _$LogoutInitialImpl();
 
   @override
   String toString() {
-    return 'NotLoginState.initial()';
+    return 'LogoutState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NotLoginInitialImpl);
+        (other.runtimeType == runtimeType && other is _$LogoutInitialImpl);
   }
 
   @override
@@ -167,10 +167,10 @@ class _$NotLoginInitialImpl implements _NotLoginInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NotLoginInitial value) initial,
-    required TResult Function(_NotLoginLoading value) loading,
-    required TResult Function(_NotLoginSucess value) success,
-    required TResult Function(_NotLoginFailed value) failure,
+    required TResult Function(_LogoutInitial value) initial,
+    required TResult Function(_LogoutLoading value) loading,
+    required TResult Function(_LogoutSucess value) success,
+    required TResult Function(_LogoutFailed value) failure,
   }) {
     return initial(this);
   }
@@ -178,10 +178,10 @@ class _$NotLoginInitialImpl implements _NotLoginInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NotLoginInitial value)? initial,
-    TResult? Function(_NotLoginLoading value)? loading,
-    TResult? Function(_NotLoginSucess value)? success,
-    TResult? Function(_NotLoginFailed value)? failure,
+    TResult? Function(_LogoutInitial value)? initial,
+    TResult? Function(_LogoutLoading value)? loading,
+    TResult? Function(_LogoutSucess value)? success,
+    TResult? Function(_LogoutFailed value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -189,10 +189,10 @@ class _$NotLoginInitialImpl implements _NotLoginInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NotLoginInitial value)? initial,
-    TResult Function(_NotLoginLoading value)? loading,
-    TResult Function(_NotLoginSucess value)? success,
-    TResult Function(_NotLoginFailed value)? failure,
+    TResult Function(_LogoutInitial value)? initial,
+    TResult Function(_LogoutLoading value)? loading,
+    TResult Function(_LogoutSucess value)? success,
+    TResult Function(_LogoutFailed value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -202,43 +202,43 @@ class _$NotLoginInitialImpl implements _NotLoginInitial {
   }
 }
 
-abstract class _NotLoginInitial implements NotLoginState {
-  factory _NotLoginInitial() = _$NotLoginInitialImpl;
+abstract class _LogoutInitial implements LogoutState {
+  factory _LogoutInitial() = _$LogoutInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$NotLoginLoadingImplCopyWith<$Res> {
-  factory _$$NotLoginLoadingImplCopyWith(_$NotLoginLoadingImpl value,
-          $Res Function(_$NotLoginLoadingImpl) then) =
-      __$$NotLoginLoadingImplCopyWithImpl<$Res>;
+abstract class _$$LogoutLoadingImplCopyWith<$Res> {
+  factory _$$LogoutLoadingImplCopyWith(
+          _$LogoutLoadingImpl value, $Res Function(_$LogoutLoadingImpl) then) =
+      __$$LogoutLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NotLoginLoadingImplCopyWithImpl<$Res>
-    extends _$NotLoginStateCopyWithImpl<$Res, _$NotLoginLoadingImpl>
-    implements _$$NotLoginLoadingImplCopyWith<$Res> {
-  __$$NotLoginLoadingImplCopyWithImpl(
-      _$NotLoginLoadingImpl _value, $Res Function(_$NotLoginLoadingImpl) _then)
+class __$$LogoutLoadingImplCopyWithImpl<$Res>
+    extends _$LogoutStateCopyWithImpl<$Res, _$LogoutLoadingImpl>
+    implements _$$LogoutLoadingImplCopyWith<$Res> {
+  __$$LogoutLoadingImplCopyWithImpl(
+      _$LogoutLoadingImpl _value, $Res Function(_$LogoutLoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$NotLoginLoadingImpl implements _NotLoginLoading {
-  _$NotLoginLoadingImpl();
+class _$LogoutLoadingImpl implements _LogoutLoading {
+  _$LogoutLoadingImpl();
 
   @override
   String toString() {
-    return 'NotLoginState.loading()';
+    return 'LogoutState.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NotLoginLoadingImpl);
+        (other.runtimeType == runtimeType && other is _$LogoutLoadingImpl);
   }
 
   @override
@@ -284,10 +284,10 @@ class _$NotLoginLoadingImpl implements _NotLoginLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NotLoginInitial value) initial,
-    required TResult Function(_NotLoginLoading value) loading,
-    required TResult Function(_NotLoginSucess value) success,
-    required TResult Function(_NotLoginFailed value) failure,
+    required TResult Function(_LogoutInitial value) initial,
+    required TResult Function(_LogoutLoading value) loading,
+    required TResult Function(_LogoutSucess value) success,
+    required TResult Function(_LogoutFailed value) failure,
   }) {
     return loading(this);
   }
@@ -295,10 +295,10 @@ class _$NotLoginLoadingImpl implements _NotLoginLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NotLoginInitial value)? initial,
-    TResult? Function(_NotLoginLoading value)? loading,
-    TResult? Function(_NotLoginSucess value)? success,
-    TResult? Function(_NotLoginFailed value)? failure,
+    TResult? Function(_LogoutInitial value)? initial,
+    TResult? Function(_LogoutLoading value)? loading,
+    TResult? Function(_LogoutSucess value)? success,
+    TResult? Function(_LogoutFailed value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -306,10 +306,10 @@ class _$NotLoginLoadingImpl implements _NotLoginLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NotLoginInitial value)? initial,
-    TResult Function(_NotLoginLoading value)? loading,
-    TResult Function(_NotLoginSucess value)? success,
-    TResult Function(_NotLoginFailed value)? failure,
+    TResult Function(_LogoutInitial value)? initial,
+    TResult Function(_LogoutLoading value)? loading,
+    TResult Function(_LogoutSucess value)? success,
+    TResult Function(_LogoutFailed value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,35 +319,35 @@ class _$NotLoginLoadingImpl implements _NotLoginLoading {
   }
 }
 
-abstract class _NotLoginLoading implements NotLoginState {
-  factory _NotLoginLoading() = _$NotLoginLoadingImpl;
+abstract class _LogoutLoading implements LogoutState {
+  factory _LogoutLoading() = _$LogoutLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$NotLoginSucessImplCopyWith<$Res> {
-  factory _$$NotLoginSucessImplCopyWith(_$NotLoginSucessImpl value,
-          $Res Function(_$NotLoginSucessImpl) then) =
-      __$$NotLoginSucessImplCopyWithImpl<$Res>;
+abstract class _$$LogoutSucessImplCopyWith<$Res> {
+  factory _$$LogoutSucessImplCopyWith(
+          _$LogoutSucessImpl value, $Res Function(_$LogoutSucessImpl) then) =
+      __$$LogoutSucessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({dynamic response});
 }
 
 /// @nodoc
-class __$$NotLoginSucessImplCopyWithImpl<$Res>
-    extends _$NotLoginStateCopyWithImpl<$Res, _$NotLoginSucessImpl>
-    implements _$$NotLoginSucessImplCopyWith<$Res> {
-  __$$NotLoginSucessImplCopyWithImpl(
-      _$NotLoginSucessImpl _value, $Res Function(_$NotLoginSucessImpl) _then)
+class __$$LogoutSucessImplCopyWithImpl<$Res>
+    extends _$LogoutStateCopyWithImpl<$Res, _$LogoutSucessImpl>
+    implements _$$LogoutSucessImplCopyWith<$Res> {
+  __$$LogoutSucessImplCopyWithImpl(
+      _$LogoutSucessImpl _value, $Res Function(_$LogoutSucessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? response = freezed,
   }) {
-    return _then(_$NotLoginSucessImpl(
+    return _then(_$LogoutSucessImpl(
       response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -358,22 +358,22 @@ class __$$NotLoginSucessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NotLoginSucessImpl implements _NotLoginSucess {
-  _$NotLoginSucessImpl({this.response});
+class _$LogoutSucessImpl implements _LogoutSucess {
+  _$LogoutSucessImpl({required this.response});
 
   @override
   final dynamic response;
 
   @override
   String toString() {
-    return 'NotLoginState.success(response: $response)';
+    return 'LogoutState.success(response: $response)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotLoginSucessImpl &&
+            other is _$LogoutSucessImpl &&
             const DeepCollectionEquality().equals(other.response, response));
   }
 
@@ -381,14 +381,13 @@ class _$NotLoginSucessImpl implements _NotLoginSucess {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NotLoginSucessImplCopyWith<_$NotLoginSucessImpl> get copyWith =>
-      __$$NotLoginSucessImplCopyWithImpl<_$NotLoginSucessImpl>(
-          this, _$identity);
+  _$$LogoutSucessImplCopyWith<_$LogoutSucessImpl> get copyWith =>
+      __$$LogoutSucessImplCopyWithImpl<_$LogoutSucessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -430,10 +429,10 @@ class _$NotLoginSucessImpl implements _NotLoginSucess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NotLoginInitial value) initial,
-    required TResult Function(_NotLoginLoading value) loading,
-    required TResult Function(_NotLoginSucess value) success,
-    required TResult Function(_NotLoginFailed value) failure,
+    required TResult Function(_LogoutInitial value) initial,
+    required TResult Function(_LogoutLoading value) loading,
+    required TResult Function(_LogoutSucess value) success,
+    required TResult Function(_LogoutFailed value) failure,
   }) {
     return success(this);
   }
@@ -441,10 +440,10 @@ class _$NotLoginSucessImpl implements _NotLoginSucess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NotLoginInitial value)? initial,
-    TResult? Function(_NotLoginLoading value)? loading,
-    TResult? Function(_NotLoginSucess value)? success,
-    TResult? Function(_NotLoginFailed value)? failure,
+    TResult? Function(_LogoutInitial value)? initial,
+    TResult? Function(_LogoutLoading value)? loading,
+    TResult? Function(_LogoutSucess value)? success,
+    TResult? Function(_LogoutFailed value)? failure,
   }) {
     return success?.call(this);
   }
@@ -452,10 +451,10 @@ class _$NotLoginSucessImpl implements _NotLoginSucess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NotLoginInitial value)? initial,
-    TResult Function(_NotLoginLoading value)? loading,
-    TResult Function(_NotLoginSucess value)? success,
-    TResult Function(_NotLoginFailed value)? failure,
+    TResult Function(_LogoutInitial value)? initial,
+    TResult Function(_LogoutLoading value)? loading,
+    TResult Function(_LogoutSucess value)? success,
+    TResult Function(_LogoutFailed value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -465,43 +464,43 @@ class _$NotLoginSucessImpl implements _NotLoginSucess {
   }
 }
 
-abstract class _NotLoginSucess implements NotLoginState {
-  factory _NotLoginSucess({final dynamic response}) = _$NotLoginSucessImpl;
+abstract class _LogoutSucess implements LogoutState {
+  factory _LogoutSucess({required final dynamic response}) = _$LogoutSucessImpl;
 
   dynamic get response;
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NotLoginSucessImplCopyWith<_$NotLoginSucessImpl> get copyWith =>
+  _$$LogoutSucessImplCopyWith<_$LogoutSucessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NotLoginFailedImplCopyWith<$Res> {
-  factory _$$NotLoginFailedImplCopyWith(_$NotLoginFailedImpl value,
-          $Res Function(_$NotLoginFailedImpl) then) =
-      __$$NotLoginFailedImplCopyWithImpl<$Res>;
+abstract class _$$LogoutFailedImplCopyWith<$Res> {
+  factory _$$LogoutFailedImplCopyWith(
+          _$LogoutFailedImpl value, $Res Function(_$LogoutFailedImpl) then) =
+      __$$LogoutFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$NotLoginFailedImplCopyWithImpl<$Res>
-    extends _$NotLoginStateCopyWithImpl<$Res, _$NotLoginFailedImpl>
-    implements _$$NotLoginFailedImplCopyWith<$Res> {
-  __$$NotLoginFailedImplCopyWithImpl(
-      _$NotLoginFailedImpl _value, $Res Function(_$NotLoginFailedImpl) _then)
+class __$$LogoutFailedImplCopyWithImpl<$Res>
+    extends _$LogoutStateCopyWithImpl<$Res, _$LogoutFailedImpl>
+    implements _$$LogoutFailedImplCopyWith<$Res> {
+  __$$LogoutFailedImplCopyWithImpl(
+      _$LogoutFailedImpl _value, $Res Function(_$LogoutFailedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$NotLoginFailedImpl(
+    return _then(_$LogoutFailedImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -512,36 +511,35 @@ class __$$NotLoginFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NotLoginFailedImpl implements _NotLoginFailed {
-  _$NotLoginFailedImpl({required this.error});
+class _$LogoutFailedImpl implements _LogoutFailed {
+  _$LogoutFailedImpl({required this.error});
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'NotLoginState.failure(error: $error)';
+    return 'LogoutState.failure(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotLoginFailedImpl &&
+            other is _$LogoutFailedImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$NotLoginFailedImplCopyWith<_$NotLoginFailedImpl> get copyWith =>
-      __$$NotLoginFailedImplCopyWithImpl<_$NotLoginFailedImpl>(
-          this, _$identity);
+  _$$LogoutFailedImplCopyWith<_$LogoutFailedImpl> get copyWith =>
+      __$$LogoutFailedImplCopyWithImpl<_$LogoutFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -583,10 +581,10 @@ class _$NotLoginFailedImpl implements _NotLoginFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_NotLoginInitial value) initial,
-    required TResult Function(_NotLoginLoading value) loading,
-    required TResult Function(_NotLoginSucess value) success,
-    required TResult Function(_NotLoginFailed value) failure,
+    required TResult Function(_LogoutInitial value) initial,
+    required TResult Function(_LogoutLoading value) loading,
+    required TResult Function(_LogoutSucess value) success,
+    required TResult Function(_LogoutFailed value) failure,
   }) {
     return failure(this);
   }
@@ -594,10 +592,10 @@ class _$NotLoginFailedImpl implements _NotLoginFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_NotLoginInitial value)? initial,
-    TResult? Function(_NotLoginLoading value)? loading,
-    TResult? Function(_NotLoginSucess value)? success,
-    TResult? Function(_NotLoginFailed value)? failure,
+    TResult? Function(_LogoutInitial value)? initial,
+    TResult? Function(_LogoutLoading value)? loading,
+    TResult? Function(_LogoutSucess value)? success,
+    TResult? Function(_LogoutFailed value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -605,10 +603,10 @@ class _$NotLoginFailedImpl implements _NotLoginFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_NotLoginInitial value)? initial,
-    TResult Function(_NotLoginLoading value)? loading,
-    TResult Function(_NotLoginSucess value)? success,
-    TResult Function(_NotLoginFailed value)? failure,
+    TResult Function(_LogoutInitial value)? initial,
+    TResult Function(_LogoutLoading value)? loading,
+    TResult Function(_LogoutSucess value)? success,
+    TResult Function(_LogoutFailed value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -618,14 +616,14 @@ class _$NotLoginFailedImpl implements _NotLoginFailed {
   }
 }
 
-abstract class _NotLoginFailed implements NotLoginState {
-  factory _NotLoginFailed({required final String error}) = _$NotLoginFailedImpl;
+abstract class _LogoutFailed implements LogoutState {
+  factory _LogoutFailed({required final String error}) = _$LogoutFailedImpl;
 
   String get error;
 
-  /// Create a copy of NotLoginState
+  /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NotLoginFailedImplCopyWith<_$NotLoginFailedImpl> get copyWith =>
+  _$$LogoutFailedImplCopyWith<_$LogoutFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

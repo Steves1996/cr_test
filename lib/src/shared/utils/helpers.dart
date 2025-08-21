@@ -29,4 +29,13 @@ class Helpers {
 
     return formatter.format(localDateTime);
   }
+
+
+  String formatTimestampToDate(int timestamp) {
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
+
+    final DateFormat formatter = DateFormat('MMMM d, yyyy', 'en_US');
+
+    return formatter.format(dateTime);
+  }
 }

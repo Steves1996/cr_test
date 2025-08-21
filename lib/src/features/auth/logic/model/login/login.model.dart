@@ -99,6 +99,10 @@ class LoginData {
   final String countryNameFr;
   @JsonKey(name: 'short_country_code')
   final String shortCountryCode;
+  @JsonKey(name: 'date_creation')
+  final int? dateCreation;
+  @JsonKey(name: 'date_update')
+  final int? dateUpdate;
   @JsonKey(name: 'country_id')
   final int countryId;
   @JsonKey(name: 'customer_type')
@@ -126,6 +130,8 @@ class LoginData {
     required this.kycLevelNumber,
     required this.kycLevelName,
     this.loyaltyLevel,
+    this.dateCreation,
+    this.dateUpdate,
     required this.countryCode,
     required this.countryNameEn,
     required this.countryNameFr,

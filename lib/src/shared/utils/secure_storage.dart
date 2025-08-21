@@ -13,7 +13,7 @@ class SecureStorage {
   }
 
   Future<String?> getAccessToken() async {
-    return storage.read(key: accessTokenKey);
+    return  storage.read(key: accessTokenKey);
   }
 
   Future<void> clearAccessToken() async {
@@ -75,8 +75,8 @@ class SecureStorage {
     await storage.deleteAll();
   }
 
-  static const String accessTokenKey = 'cr.token.key';
-  static const String refreshTokenKey = 'cr.token.key';
+  static const String accessTokenKey = 'cr.accessToken.key';
+  static const String refreshTokenKey = 'cr.refreshToken.key';
   static const String useIdKey = 'cr.user.id.key';
-  static const String useDataKey = 'ztf.user.key';
+  static const String useDataKey = 'cr.user.key';
 }

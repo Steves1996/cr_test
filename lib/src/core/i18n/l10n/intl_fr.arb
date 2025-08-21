@@ -4,6 +4,12 @@
   "loadingDialog_content": "Chargement ...",
   "empty_field": "Ce champ est obligatoire",
   "search": "Rechercher",
+  "confirmation": "Confirmation",
+  "seeting_confirm_logout": "Est-vous sûre de vouloir vous déconnecter ?",
+  "cancel": "Annuler",
+  "seeting_log_out": "J'accepte",
+  "error_loading_profile": "Erreur lors du chargement du profil",
+  "retry": "Essayer",
 
 
   "login_sign_in_to_crypto_rates": "Veuillez vous connecter pour avoir accès aux données",

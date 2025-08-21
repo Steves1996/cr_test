@@ -31,6 +31,7 @@ class SplashScreen extends StatefulWidget implements AutoRouteWrapper {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SecureStorage secureStorage = locator<SecureStorage>();
 
   @override
   void initState() {
@@ -48,12 +49,18 @@ class _SplashScreenState extends State<SplashScreen> {
             listener: (context, state) {
               state.whenOrNull(
                 success: (response) {
-                  Future.delayed(const Duration(seconds: 5), () {
-                    context.router.replaceAll([const HomeRoute()]);
-                  });
+                  if (response != null) {
+                    Future.delayed(const Duration(seconds: 3), () {
+                      context.router.replaceAll([const HomeRoute()]);
+                    });
+                  } else {
+                    Future.delayed(const Duration(seconds: 3), () {
+                      context.router.replaceAll([const LoginRoute()]);
+                    });
+                  }
                 },
                 failure: (error) {
-                  Future.delayed(const Duration(seconds: 5), () {
+                  Future.delayed(const Duration(seconds: 3), () {
                     context.router.replaceAll([const LoginRoute()]);
                   });
                 },

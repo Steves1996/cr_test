@@ -11,7 +11,7 @@ final _logger = Logger(printer: PrettyPrinter());
 class LoginRepository {
   final DioService _dioService;
 
-  LoginRepository({DioService? dioService}) : _dioService = dioService ?? DioService.createNewInstance();
+  LoginRepository({DioService? dioService}) : _dioService = dioService ?? DioService.withDefaultUrl();
 
   Future<LoginResponse> login({required LoginRequest request}) async {
     final url = '${getControllerName()}v2/auth/login';

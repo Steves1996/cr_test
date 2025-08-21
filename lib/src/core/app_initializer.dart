@@ -11,7 +11,6 @@ class AppInitializer {
   Future<void> preAppRun() async {
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-    //await locator<PreferencesService>().init();
   }
 
   /// Initialize services, plugins, etc. after the app runs.
@@ -20,6 +19,5 @@ class AppInitializer {
       ErrorWidget.builder = (FlutterErrorDetails details) => const SizedBox();
     }
   }
-
 
 }

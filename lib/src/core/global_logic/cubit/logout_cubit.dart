@@ -16,7 +16,7 @@ class LogoutCubit extends Cubit<LogoutState> {
   void logOut() async {
     emit(LogoutState.loading());
     try {
-      await _secureStorage.clearAll();
+      await _secureStorage.clearAll();///
       emit(LogoutState.success(response: true));
     } catch (error) {
       emit(LogoutState.failure(error: error.toString()));

@@ -100,6 +100,66 @@ class I18n {
     );
   }
 
+  /// `Confirmation`
+  String get confirmation {
+    return Intl.message(
+      'Confirmation',
+      name: 'confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Est-vous sûre de vouloir vous déconnecter ?`
+  String get seeting_confirm_logout {
+    return Intl.message(
+      'Est-vous sûre de vouloir vous déconnecter ?',
+      name: 'seeting_confirm_logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Annuler`
+  String get cancel {
+    return Intl.message(
+      'Annuler',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `J'accepte`
+  String get seeting_log_out {
+    return Intl.message(
+      'J\'accepte',
+      name: 'seeting_log_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Erreur lors du chargement du profil`
+  String get error_loading_profile {
+    return Intl.message(
+      'Erreur lors du chargement du profil',
+      name: 'error_loading_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Essayer`
+  String get retry {
+    return Intl.message(
+      'Essayer',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Veuillez vous connecter pour avoir accès aux données`
   String get login_sign_in_to_crypto_rates {
     return Intl.message(

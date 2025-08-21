@@ -8,12 +8,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DioService {
-  static DioService? _instance;
   late Dio _dio;
   static const int connectTimeout = 30000; // 30 secondes
   static const int receiveTimeout = 30000; // 30 secondes
-  static const String defaultGateway = '';
   final SecureStorage _secureStorage = SecureStorage();
+  final String _baseUrl;
 
   // Change from 'late final' to nullable AppRouter
   static AppRouter? _appRouter;
@@ -26,13 +25,19 @@ class DioService {
 
   Dio get dio => _dio;
 
-  factory DioService({String gateway = defaultGateway}) {
-    _instance ??= DioService._internal(gateway);
-    return _instance!;
+  // Constructeur principal qui accepte le baseUrl
+  DioService({String? baseUrl}) : _baseUrl = baseUrl ?? dotenv.env['BASE_URL'] ?? '' {
+    _initializeDio();
   }
 
-  static DioService createNewInstance({String gateway = defaultGateway}) {
-    return DioService._internal(gateway);
+  // Factory pour créer une nouvelle instance avec un baseUrl spécifique
+  factory DioService.withBaseUrl(String baseUrl) {
+    return DioService(baseUrl: baseUrl);
+  }
+
+  // Factory pour créer une instance avec l'URL par défaut du .env
+  factory DioService.withDefaultUrl() {
+    return DioService();
   }
 
   // Updated method to safely set AppRouter
@@ -43,10 +48,11 @@ class DioService {
   // Getter to access the router safely
   static AppRouter? get appRouter => _appRouter;
 
-  DioService._internal(String gateway) {
+  // Méthode d'initialisation de Dio
+  void _initializeDio() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: dotenv.env['BASE_URL'] ?? '',
+        baseUrl: _baseUrl,
         connectTimeout: const Duration(milliseconds: connectTimeout),
         receiveTimeout: const Duration(milliseconds: receiveTimeout),
         sendTimeout: const Duration(milliseconds: connectTimeout),
@@ -131,7 +137,7 @@ class DioService {
       // Créer une nouvelle instance Dio pour éviter l'interception
       final refreshDio = Dio(
         BaseOptions(
-          baseUrl: dotenv.env['BASE_URL'] ?? '',
+          baseUrl: _baseUrl, // Utilise la même baseUrl que l'instance principale
           connectTimeout: const Duration(milliseconds: connectTimeout),
           receiveTimeout: const Duration(milliseconds: receiveTimeout),
           headers: {
@@ -221,4 +227,7 @@ class DioService {
       }
     }
   }
+
+  // Getter pour obtenir la baseUrl actuelle
+  String get baseUrl => _baseUrl;
 }
