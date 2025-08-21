@@ -60,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_success":
             MessageLookupByLibrary.simpleMessage("Connexion réussie"),
         "member_since": MessageLookupByLibrary.simpleMessage("Membre depuis"),
+        "no_result_for_search":
+            MessageLookupByLibrary.simpleMessage("Aucun résultat trouvé"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "profile": MessageLookupByLibrary.simpleMessage("Mes Informations"),
         "rate_current_rate":
@@ -74,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "session_recent":
             MessageLookupByLibrary.simpleMessage("Session recente"),
         "skip": MessageLookupByLibrary.simpleMessage("Passer ->"),
-        "try_again": MessageLookupByLibrary.simpleMessage("Esasyer à nouveau")
+        "try_again": MessageLookupByLibrary.simpleMessage("Esasyer à nouveau"),
+        "try_another_search": MessageLookupByLibrary.simpleMessage(
+            "Essayer avec une autre recherche")
       };
 }

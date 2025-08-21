@@ -6,6 +6,7 @@ import 'package:cr/src/features/home/ui/components/header_component.dart';
 import 'package:cr/src/features/home/ui/components/rate_time_component.dart';
 import 'package:cr/src/features/home/ui/modal/bottom_sheet_setting_modal.dart';
 import 'package:cr/src/features/home/ui/widgets/rate_item.dart';
+import 'package:cr/src/features/profile/logic/cubit/profile_cubit.dart'; // Ajout de l'import pour ProfileCubit
 import 'package:cr/src/shared/components/dialogs/api_error_dialog.dart';
 import 'package:cr/src/shared/components/forms/input.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
@@ -25,7 +26,9 @@ class HomeScreen extends StatefulWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => RateCubit())],
+      providers: [
+        BlocProvider(create: (_) => RateCubit()),
+      ],
       child: this,
     );
   }
@@ -34,14 +37,16 @@ class HomeScreen extends StatefulWidget implements AutoRouteWrapper {
 class _HomeScreenState extends State<HomeScreen> {
   late TextEditingController _searchController;
   List<MapEntry<String, double>> _filteredData = [];
+  double? currentRate;
+  String currentCurrency = 'XAF';
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
     _searchController.addListener(_filterData);
-    // Déclencher le chargement des données
     context.read<RateCubit>().getRates();
+    context.read<ProfileCubit>().getUserData();
   }
 
   @override
@@ -52,8 +57,27 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _filterData() {
-    // Cette méthode sera appelée lors du changement de texte dans le champ de recherche
     setState(() {});
+  }
+
+  void _updateCurrentRate(RatesResponse? response) {
+    if (response == null) return;
+
+    final xafEntry = response.data.entries
+        .where((entry) => entry.key == currentCurrency)
+        .firstOrNull;
+
+    if (xafEntry != null) {
+      setState(() {
+        currentRate = xafEntry.value;
+      });
+      print('Taux $currentCurrency trouvé: ${xafEntry.value}');
+    } else {
+      setState(() {
+        currentRate = null;
+      });
+      print('Taux $currentCurrency non trouvé');
+    }
   }
 
   List<MapEntry<String, double>> _getFilteredData(RatesResponse? response) {
@@ -64,99 +88,117 @@ class _HomeScreenState extends State<HomeScreen> {
       return response.data.entries.toList();
     }
 
-    return response.data.entries
-        .where((entry) => entry.key.toLowerCase().contains(query))
-        .toList();
+    return response.data.entries.where((entry) => entry.key.toLowerCase().contains(query)).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<RateCubit, RateState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            failure: (error) {
-              ApiErrorDialog.show(context: context, error: error);
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<RateCubit, RateState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (response) {
+                  _updateCurrentRate(response);
+                },
+                failure: (error) {
+                  ApiErrorDialog.show(context: context, error: error);
+                },
+              );
             },
-          );
-        },
-        builder: (context, state) {
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  HeaderComponent(onPressed: () {
-                    _showSettingsBottomSheet(context);
-                  }),
-
-                  SizedBox(height: 10.h),
-
-                  state.whenOrNull(
-                    success: (response) => RateTimeComponent(
-                      cryptoTime: response.cryptoTime,
-                      fiat: response.fiatTime,
-                      currency: 'XAF',
-                      value: '651',
+          ),
+          BlocListener<ProfileCubit, ProfileState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (userProfile) {
+                  setState(() {
+                    currentCurrency = userProfile.fiatCurrencyCode ?? 'XAF';
+                  });
+                },
+              );
+            },
+          ),
+        ],
+        child: BlocBuilder<RateCubit, RateState>(
+          builder: (context, state) {
+            return SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    BlocBuilder<ProfileCubit, ProfileState>(
+                      builder: (context, profileState) {
+                        return HeaderComponent(
+                          onPressed: () {
+                            _showSettingsBottomSheet(context);
+                          },
+                        );
+                      },
                     ),
-                  ) ?? RateTimeComponent(
-                    cryptoTime: DateTime.now().toUtc().toIso8601String(),
-                    fiat: DateTime.now().toUtc().toIso8601String(),
-                    currency: 'XAF',
-                    value: '651',
-                  ),
 
-                  SizedBox(height: 15.h),
+                    SizedBox(height: 10.h),
 
-                  Input(
-                    labelColor: Colors.black,
-                    controller: _searchController,
-                    hintText: I18n.of(context).search,
-                    cursorColor: context.colorScheme.primary,
-                    fillColor: context.colorScheme.primary.withOpacity(0.05),
-                    style: Theme.of(context).primaryTextTheme.bodyLarge?.copyWith(
-                      color: context.colorScheme.shadow,
+                    state.whenOrNull(
+                      success: (response) => RateTimeComponent(
+                        cryptoTime: response.cryptoTime,
+                        fiat: response.fiatTime,
+                        currency: currentCurrency,
+                        value: currentRate?.toString() ?? '0',
+                      ),
+                    ) ??
+                        RateTimeComponent(
+                          cryptoTime: DateTime.now().toUtc().toIso8601String(),
+                          fiat: DateTime.now().toUtc().toIso8601String(),
+                          currency: currentCurrency,
+                          value: currentRate?.toString() ?? '0',
+                        ),
+
+                    SizedBox(height: 15.h),
+
+                    Input(
+                      labelColor: Colors.black,
+                      controller: _searchController,
+                      hintText: I18n.of(context).search,
+                      cursorColor: context.colorScheme.primary,
+                      fillColor: context.colorScheme.primary.withOpacity(0.05),
+                      style: Theme.of(context).primaryTextTheme.bodyLarge?.copyWith(color: context.colorScheme.shadow),
+                      textCapitalization: TextCapitalization.none,
+                      keyboardType: TextInputType.text,
+                      filled: true,
+                      maxLines: 1,
+                      minLines: 1,
+                      prefixIcon: Icon(IconsaxPlusLinear.search_normal, color: context.colorScheme.primary, size: 20.sp),
                     ),
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.text,
-                    filled: true,
-                    maxLines: 1,
-                    minLines: 1,
-                    prefixIcon: Icon(
-                      IconsaxPlusLinear.search_normal,
-                      color: context.colorScheme.primary,
-                      size: 20.sp,
-                    ),
-                  ),
 
-                  SizedBox(height: 8.h),
+                    SizedBox(height: 8.h),
 
-                  Expanded(
-                    child: state.when(
-                      initial: () => _buildLoadingState(),
-                      loading: () => _buildLoadingState(),
-                      success: (response) => _buildSuccessState(response),
-                      failure: (error) => _buildErrorState(),
+                    Expanded(
+                      child: state.when(
+                        initial: () => _buildLoadingState(),
+                        loading: () => _buildLoadingState(),
+                        success: (response) => _buildSuccessState(response),
+                        failure: (error) => _buildErrorState(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
 
   Widget _buildLoadingState() {
-    return  Skeletonizer(
+    return Skeletonizer(
       enabled: true,
       child: ListView.separated(
         itemCount: 5,
         separatorBuilder: (context, index) => SizedBox(height: 8.h),
         itemBuilder: (context, index) {
-          return const RateItem(
-          );
+          return const RateItem();
         },
       ),
     );
@@ -180,9 +222,20 @@ class _HomeScreenState extends State<HomeScreen> {
           separatorBuilder: (context, index) => SizedBox(height: 8.h),
           itemBuilder: (context, index) {
             final entry = filteredData[index];
+            if (entry.key == currentCurrency) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (mounted) {
+                  setState(() {
+                    currentRate = entry.value;
+                  });
+                }
+              });
+            }
+
             return RateItem(
               currency: entry.key,
               rate: entry.value.toString(),
+              isSelected: entry.key == currentCurrency,
             );
           },
         ),
@@ -195,19 +248,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            IconsaxPlusLinear.warning_2,
-            size: 64.sp,
-            color: Colors.grey,
-          ),
+          Icon(IconsaxPlusLinear.warning_2, size: 64.sp, color: Colors.grey),
           SizedBox(height: 16.h),
           Text(
             I18n.of(context).error_during_loading,
-            style: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[700],
-            ),
+            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.grey[700]),
           ),
           SizedBox(height: 24.h),
           ElevatedButton.icon(
@@ -215,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
               context.read<RateCubit>().getRates();
             },
             icon: Icon(IconsaxPlusLinear.refresh, size: 20.sp),
-            label:  Text(I18n.of(context).try_again),
+            label: Text(I18n.of(context).try_again),
             style: ElevatedButton.styleFrom(
               backgroundColor: context.colorScheme.primary,
               foregroundColor: Colors.white,
@@ -232,27 +277,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            IconsaxPlusLinear.search_normal,
-            size: 64.sp,
-            color: Colors.grey,
-          ),
+          Icon(IconsaxPlusLinear.search_normal, size: 64.sp, color: Colors.grey),
           SizedBox(height: 16.h),
           Text(
-            'Aucun résultat trouvé',
-            style: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[700],
-            ),
+            I18n.of(context).no_result_for_search,
+            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.grey[700]),
           ),
           SizedBox(height: 8.h),
           Text(
-            'Essayez avec un autre terme de recherche',
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Colors.grey[600],
-            ),
+            I18n.of(context).try_another_search,
+            style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
           ),
         ],
       ),
@@ -264,17 +298,11 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
       ),
       builder: (BuildContext context) {
         return const ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          ),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
           child: BottomSheetSettingModal(),
         );
       },

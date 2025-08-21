@@ -190,6 +190,26 @@ class I18n {
     );
   }
 
+  /// `Aucun résultat trouvé`
+  String get no_result_for_search {
+    return Intl.message(
+      'Aucun résultat trouvé',
+      name: 'no_result_for_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Essayer avec une autre recherche`
+  String get try_another_search {
+    return Intl.message(
+      'Essayer avec une autre recherche',
+      name: 'try_another_search',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Veuillez vous connecter pour avoir accès aux données`
   String get login_sign_in_to_crypto_rates {
     return Intl.message(

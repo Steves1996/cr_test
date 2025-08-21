@@ -75,6 +75,10 @@ class LoginData {
   final String emailAddress;
   @JsonKey(name: 'date_of_birth')
   final String? dateOfBirth;
+  @JsonKey(name: 'fiat_currency_code')
+  final String? fiatCurrencyCode;
+  @JsonKey(name: 'fiat_currency_id')
+  final String? fiatCurrencyId;
   @JsonKey(name: 'preferred_language')
   final String preferredLanguage;
   @JsonKey(name: 'account_status')
@@ -112,7 +116,7 @@ class LoginData {
   final List<dynamic> wallets;
 
 
-  LoginData({ required this.userId,
+  LoginData( { required this.userId,
     required this.username,
     required this.phoneNumber,
     required this.phoneId,
@@ -132,6 +136,8 @@ class LoginData {
     this.loyaltyLevel,
     this.dateCreation,
     this.dateUpdate,
+    this.fiatCurrencyCode,
+    this.fiatCurrencyId,
     required this.countryCode,
     required this.countryNameEn,
     required this.countryNameFr,

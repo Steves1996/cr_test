@@ -13,6 +13,8 @@
   "skip": "Passer ->",
   "error_during_loading":"Erreur lors du chargement",
   "try_again": "Esasyer à nouveau",
+  "no_result_for_search":"Aucun résultat trouvé",
+  "try_another_search":"Essayer avec une autre recherche",
 
 
   "login_sign_in_to_crypto_rates": "Veuillez vous connecter pour avoir accès aux données",

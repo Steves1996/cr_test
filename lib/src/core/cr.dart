@@ -4,6 +4,7 @@ import 'package:cr/src/core/theme/app_theme.dart';
 import 'package:cr/src/core/theme/theme_logic/model/theme_state.dart';
 import 'package:cr/src/core/theme/theme_logic/repository/theme_repository.dart';
 import 'package:cr/src/core/theme/theme_logic/theme_bloc/theme_cubit.dart';
+import 'package:cr/src/features/profile/logic/cubit/profile_cubit.dart';
 import 'package:cr/src/shared/locator.dart';
 import 'package:cr/src/shared/transalation/logic/bloc/language_cubit.dart';
 import 'package:cr/src/shared/transalation/logic/bloc/language_state.dart';
@@ -29,6 +30,7 @@ class Cr extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LanguageCubit(LanguageRepository())..initializeLanguage()),
         BlocProvider(create: (context) => ThemeCubit(themeRepository: ThemeRepository())..initializeTheme()),
+        BlocProvider(create: (context) => ProfileCubit()..getUserData()),
       ],
       child: Builder(
         builder: (context) {
