@@ -160,6 +160,36 @@ class I18n {
     );
   }
 
+  /// `Passer ->`
+  String get skip {
+    return Intl.message(
+      'Passer ->',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Erreur lors du chargement`
+  String get error_during_loading {
+    return Intl.message(
+      'Erreur lors du chargement',
+      name: 'error_during_loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Esasyer à nouveau`
+  String get try_again {
+    return Intl.message(
+      'Esasyer à nouveau',
+      name: 'try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Veuillez vous connecter pour avoir accès aux données`
   String get login_sign_in_to_crypto_rates {
     return Intl.message(

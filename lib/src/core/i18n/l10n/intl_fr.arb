@@ -10,6 +10,9 @@
   "seeting_log_out": "J'accepte",
   "error_loading_profile": "Erreur lors du chargement du profil",
   "retry": "Essayer",
+  "skip": "Passer ->",
+  "error_during_loading":"Erreur lors du chargement",
+  "try_again": "Esasyer à nouveau",
 
 
   "login_sign_in_to_crypto_rates": "Veuillez vous connecter pour avoir accès aux données",

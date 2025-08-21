@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ce champ est obligatoire"),
         "empty_field_or_bad_email": MessageLookupByLibrary.simpleMessage(
             "Veuillez entrer une adresse mail valide"),
+        "error_during_loading":
+            MessageLookupByLibrary.simpleMessage("Erreur lors du chargement"),
         "error_loading_profile": MessageLookupByLibrary.simpleMessage(
             "Erreur lors du chargement du profil"),
         "header_real_time_exchange":
@@ -70,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Est-vous sûre de vouloir vous déconnecter ?"),
         "seeting_log_out": MessageLookupByLibrary.simpleMessage("J\'accepte"),
         "session_recent":
-            MessageLookupByLibrary.simpleMessage("Session recente")
+            MessageLookupByLibrary.simpleMessage("Session recente"),
+        "skip": MessageLookupByLibrary.simpleMessage("Passer ->"),
+        "try_again": MessageLookupByLibrary.simpleMessage("Esasyer à nouveau")
       };
 }

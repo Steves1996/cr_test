@@ -2,24 +2,37 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cr/src/features/auth/logic/model/login/login.model.dart';
+import 'package:cr/src/features/home/logic/model/rates.model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorage {
   final FlutterSecureStorage storage;
-  SecureStorage({FlutterSecureStorage? storage}) : storage = storage ?? const FlutterSecureStorage();
+  SecureStorage({FlutterSecureStorage? storage})
+    : storage =
+          storage ??
+          const FlutterSecureStorage(
+            aOptions: AndroidOptions(
+              encryptedSharedPreferences: true,
+              resetOnError: false,
+              sharedPreferencesName: 'cr_secure_prefs',
+              preferencesKeyPrefix: 'cr_',
+            ),
+            lOptions: LinuxOptions(),
+            wOptions: WindowsOptions(),
+            mOptions: MacOsOptions(),
+          );
 
   Future<void> setAccessToken(String token) async {
     await storage.write(key: accessTokenKey, value: token);
   }
 
   Future<String?> getAccessToken() async {
-    return  storage.read(key: accessTokenKey);
+    return storage.read(key: accessTokenKey);
   }
 
   Future<void> clearAccessToken() async {
     await storage.delete(key: accessTokenKey);
   }
-
 
   Future<void> setRefreshToken(String refreshToken) async {
     await storage.write(key: refreshTokenKey, value: refreshToken);
@@ -70,6 +83,30 @@ class SecureStorage {
     await storage.delete(key: useDataKey);
   }
 
+  //rate data
+  Future<void> setRate(RatesResponse rate) async {
+    final String rateJson = jsonEncode(rate.toJson());
+    await storage.write(key: rateDataKey, value: rateJson);
+  }
+
+  Future<RatesResponse?> getRate() async {
+    try {
+      final String? rateJson = await storage.read(key: rateDataKey);
+      if (rateJson != null && rateJson.isNotEmpty) {
+        final Map<String, dynamic> userMap = jsonDecode(rateJson);
+        return RatesResponse.fromJson(userMap);
+      }
+      return null;
+    } catch (e) {
+      log('Erreur lors de la récupération de l\'utilisateur : $e');
+      return null;
+    }
+  }
+
+  Future<void> clearRate() async {
+    await storage.delete(key: rateDataKey);
+  }
+
   // Clear all stored data
   Future<void> clearAll() async {
     await storage.deleteAll();
@@ -79,4 +116,5 @@ class SecureStorage {
   static const String refreshTokenKey = 'cr.refreshToken.key';
   static const String useIdKey = 'cr.user.id.key';
   static const String useDataKey = 'cr.user.key';
+  static const String rateDataKey = 'cr.rate.key';
 }

@@ -81,6 +81,22 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () => context.router.replaceAll([const HomeRoute()]),
+                      child: Text(
+                        I18n.of(context).skip,
+                        style: context.textTheme.headlineMedium?.copyWith(
+                          color: context.colorScheme.primary,
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 Card(
                   elevation: 2.h,
                   color: context.colorScheme.surface,
@@ -132,8 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               Validators.required(I18n.of(context).empty_field),
                               Validators.email(I18n.of(context).empty_field_or_bad_email),
                             ]),
-
-
                           ),
                           SizedBox(height: 8.h),
                           Input(
