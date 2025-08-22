@@ -63,7 +63,7 @@ LoginData _$LoginDataFromJson(Map<String, dynamic> json) => LoginData(
       dateCreation: (json['date_creation'] as num?)?.toInt(),
       dateUpdate: (json['date_update'] as num?)?.toInt(),
       fiatCurrencyCode: json['fiat_currency_code'] as String?,
-      fiatCurrencyId: json['fiat_currency_id'] as String?,
+      fiatCurrencyId: (json['fiat_currency_id'] as num?)?.toInt(),
       countryCode: json['country_code'] as String,
       countryNameEn: json['country_name_en'] as String,
       countryNameFr: json['country_name_fr'] as String,

@@ -37,6 +37,9 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   shared_preferences: ^2.5.3
+  connectivity_plus: ^6.1.5
+  mockito: ^5.4.5
+  bloc_test: ^9.1.7
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4

@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'global_logic/check_internet_logic/cubit/check_internet_cubit.dart';
 import 'i18n/l10n.dart';
 
 class Cr extends StatelessWidget {
@@ -31,6 +32,7 @@ class Cr extends StatelessWidget {
         BlocProvider(create: (context) => LanguageCubit(LanguageRepository())..initializeLanguage()),
         BlocProvider(create: (context) => ThemeCubit(themeRepository: ThemeRepository())..initializeTheme()),
         BlocProvider(create: (context) => ProfileCubit()..getUserData()),
+        BlocProvider(create: (context) => CheckInternetCubit()),
       ],
       child: Builder(
         builder: (context) {

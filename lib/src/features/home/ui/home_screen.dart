@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cr/src/core/global_logic/check_internet_logic/cubit/check_internet_cubit.dart';
 import 'package:cr/src/core/i18n/l10n.dart';
 import 'package:cr/src/features/home/logic/cubit/rate_cubit.dart';
+import 'package:cr/src/features/home/logic/cubit/rate_offline_cubit/rate_offline_cubit.dart';
 import 'package:cr/src/features/home/logic/model/rates.model.dart';
 import 'package:cr/src/features/home/ui/components/header_component.dart';
 import 'package:cr/src/features/home/ui/components/rate_time_component.dart';
 import 'package:cr/src/features/home/ui/modal/bottom_sheet_setting_modal.dart';
 import 'package:cr/src/features/home/ui/widgets/rate_item.dart';
-import 'package:cr/src/features/profile/logic/cubit/profile_cubit.dart'; // Ajout de l'import pour ProfileCubit
+import 'package:cr/src/features/profile/logic/cubit/profile_cubit.dart';
 import 'package:cr/src/shared/components/dialogs/api_error_dialog.dart';
 import 'package:cr/src/shared/components/forms/input.dart';
+import 'package:cr/src/shared/components/toast.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +31,7 @@ class HomeScreen extends StatefulWidget implements AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => RateCubit()),
+        BlocProvider(create: (_) => RateOfflineCubit()),
       ],
       child: this,
     );
@@ -39,14 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
   List<MapEntry<String, double>> _filteredData = [];
   double? currentRate;
   String currentCurrency = 'XAF';
+  bool _isOffline = false;
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
     _searchController.addListener(_filterData);
-    context.read<RateCubit>().getRates();
+
     context.read<ProfileCubit>().getUserData();
+
+    _checkInternetAndLoadRates();
   }
 
   @override
@@ -56,6 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  void _checkInternetAndLoadRates() {
+    context.read<CheckInternetCubit>().checkInternet();
+  }
+
   void _filterData() {
     setState(() {});
   }
@@ -63,20 +74,16 @@ class _HomeScreenState extends State<HomeScreen> {
   void _updateCurrentRate(RatesResponse? response) {
     if (response == null) return;
 
-    final xafEntry = response.data.entries
-        .where((entry) => entry.key == currentCurrency)
-        .firstOrNull;
+    final currencyEntry = response.data.entries.where((entry) => entry.key == currentCurrency).firstOrNull;
 
-    if (xafEntry != null) {
+    if (currencyEntry != null) {
       setState(() {
-        currentRate = xafEntry.value;
+        currentRate = currencyEntry.value;
       });
-      print('Taux $currentCurrency trouvé: ${xafEntry.value}');
     } else {
       setState(() {
         currentRate = null;
       });
-      print('Taux $currentCurrency non trouvé');
     }
   }
 
@@ -91,12 +98,55 @@ class _HomeScreenState extends State<HomeScreen> {
     return response.data.entries.where((entry) => entry.key.toLowerCase().contains(query)).toList();
   }
 
+  void _handleOfflineMode() {
+    setState(() {
+      _isOffline = true;
+    });
+    context.read<RateOfflineCubit>().getOffLineRates();
+  }
+
+  void _handleOnlineMode() {
+    setState(() {
+      _isOffline = false;
+    });
+
+    context.read<RateCubit>().getRates();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: MultiBlocListener(
         listeners: [
+          BlocListener<CheckInternetCubit, CheckInternetState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (hasInternet) {
+                  if (hasInternet) {
+                    _handleOnlineMode();
+                  } else {
+                    _handleOfflineMode();
+                  }
+                },
+                failure: (error) {
+                  _handleOfflineMode();
+                },
+              );
+            },
+          ),
           BlocListener<RateCubit, RateState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (response) {
+                  _updateCurrentRate(response);
+                },
+                failure: (error) {
+                  _handleOfflineMode();
+                },
+              );
+            },
+          ),
+          BlocListener<RateOfflineCubit, RateOfflineState>(
             listener: (context, state) {
               state.whenOrNull(
                 success: (response) {
@@ -115,47 +165,63 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     currentCurrency = userProfile.fiatCurrencyCode ?? 'XAF';
                   });
+
+                  if (mounted) {
+                    _checkInternetAndLoadRates();
+                  }
+                },
+                failure: (error) {
+                  setState(() {
+                    currentCurrency = 'XAF';
+                  });
+                  _checkInternetAndLoadRates();
                 },
               );
             },
           ),
         ],
-        child: BlocBuilder<RateCubit, RateState>(
-          builder: (context, state) {
+        child: _buildMainContent(),
+      ),
+    );
+  }
+
+  Widget _buildMainContent() {
+    return BlocBuilder<RateCubit, RateState>(
+      builder: (context, onlineState) {
+        return BlocBuilder<RateOfflineCubit, RateOfflineState>(
+          builder: (context, offlineState) {
+            // Déterminer quel état utiliser basé sur le mode
+            final currentState = _isOffline ? offlineState : onlineState;
+
             return SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
+                    // Header avec indicateur de statut
                     BlocBuilder<ProfileCubit, ProfileState>(
                       builder: (context, profileState) {
-                        return HeaderComponent(
-                          onPressed: () {
-                            _showSettingsBottomSheet(context);
-                          },
+                        return Column(
+                          children: [
+                            HeaderComponent(
+                              onPressed: () {
+                                _showSettingsBottomSheet(context);
+                              },
+                            ),
+                            if (_isOffline) _buildOfflineIndicator(),
+                          ],
                         );
                       },
                     ),
 
                     SizedBox(height: 10.h),
 
-                    state.whenOrNull(
-                      success: (response) => RateTimeComponent(
-                        cryptoTime: response.cryptoTime,
-                        fiat: response.fiatTime,
-                        currency: currentCurrency,
-                        value: currentRate?.toString() ?? '0',
-                      ),
-                    ) ??
-                        RateTimeComponent(
-                          cryptoTime: DateTime.now().toUtc().toIso8601String(),
-                          fiat: DateTime.now().toUtc().toIso8601String(),
-                          currency: currentCurrency,
-                          value: currentRate?.toString() ?? '0',
-                        ),
+                    // Rate Time Component
+                    _buildRateTimeComponent(currentState),
 
                     SizedBox(height: 15.h),
 
+                    // Search Input
                     Input(
                       labelColor: Colors.black,
                       controller: _searchController,
@@ -168,26 +234,73 @@ class _HomeScreenState extends State<HomeScreen> {
                       filled: true,
                       maxLines: 1,
                       minLines: 1,
-                      prefixIcon: Icon(IconsaxPlusLinear.search_normal, color: context.colorScheme.primary, size: 20.sp),
+                      prefixIcon: Icon(
+                        IconsaxPlusLinear.search_normal,
+                        color: context.colorScheme.primary,
+                        size: 20.sp,
+                      ),
                     ),
 
                     SizedBox(height: 8.h),
 
-                    Expanded(
-                      child: state.when(
-                        initial: () => _buildLoadingState(),
-                        loading: () => _buildLoadingState(),
-                        success: (response) => _buildSuccessState(response),
-                        failure: (error) => _buildErrorState(),
-                      ),
-                    ),
+                    // Main Content
+                    Expanded(child: _buildStateContent(currentState)),
                   ],
                 ),
               ),
             );
           },
-        ),
+        );
+      },
+    );
+  }
+
+  Widget _buildOfflineIndicator() {
+    return Container(
+      margin: EdgeInsets.only(top: 8.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+      decoration: BoxDecoration(
+        color: Colors.orange.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.orange.withOpacity(0.3)),
       ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(IconsaxPlusLinear.wifi_square, size: 16.sp, color: Colors.orange),
+          SizedBox(width: 6.w),
+          Text(
+            I18n.of(context).no_internet_connection,
+            style: TextStyle(fontSize: 12.sp, color: Colors.orange[700], fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRateTimeComponent(dynamic state) {
+    return state.whenOrNull(
+          success: (response) => RateTimeComponent(
+            cryptoTime: response.cryptoTime,
+            fiat: response.fiatTime,
+            currency: currentCurrency,
+            value: currentRate?.toString() ?? '0',
+          ),
+        ) ??
+        RateTimeComponent(
+          cryptoTime: DateTime.now().toUtc().toIso8601String(),
+          fiat: DateTime.now().toUtc().toIso8601String(),
+          currency: currentCurrency,
+          value: currentRate?.toString() ?? '0',
+        );
+  }
+
+  Widget _buildStateContent(dynamic state) {
+    return state.when(
+      initial: () => _buildLoadingState(),
+      loading: () => _buildLoadingState(),
+      success: (response) => _buildSuccessState(response),
+      failure: (error) => _buildErrorState(),
     );
   }
 
@@ -213,7 +326,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<RateCubit>().getRates();
+        if (_isOffline) {
+          context.read<RateOfflineCubit>().getOffLineRates();
+        } else {
+          context.read<RateCubit>().getRates();
+        }
       },
       child: Skeletonizer(
         enabled: false,
@@ -253,11 +370,19 @@ class _HomeScreenState extends State<HomeScreen> {
           Text(
             I18n.of(context).error_during_loading,
             style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.grey[700]),
+            textAlign: TextAlign.center,
           ),
+          SizedBox(height: 8.h),
+          if (_isOffline)
+            Text(
+              I18n.of(context).offline_data_not_available,
+              style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
+              textAlign: TextAlign.center,
+            ),
           SizedBox(height: 24.h),
           ElevatedButton.icon(
             onPressed: () {
-              context.read<RateCubit>().getRates();
+              _checkInternetAndLoadRates();
             },
             icon: Icon(IconsaxPlusLinear.refresh, size: 20.sp),
             label: Text(I18n.of(context).try_again),

@@ -14,6 +14,12 @@ clean:
 	flutter clean
 	flutter pub get
 
+clean-build-apk:
+	@echo "clean, pub get and build split apk..."
+	flutter clean
+	flutter pub get
+	flutter build apk --split-per-abi
+
 codegen:
 	@echo "Generating code..."
 	fvm dart run build_runner build --delete-conflicting-outputs

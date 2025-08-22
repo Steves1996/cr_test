@@ -78,7 +78,7 @@ class LoginData {
   @JsonKey(name: 'fiat_currency_code')
   final String? fiatCurrencyCode;
   @JsonKey(name: 'fiat_currency_id')
-  final String? fiatCurrencyId;
+  final int? fiatCurrencyId;
   @JsonKey(name: 'preferred_language')
   final String preferredLanguage;
   @JsonKey(name: 'account_status')

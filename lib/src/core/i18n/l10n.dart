@@ -210,6 +210,36 @@ class I18n {
     );
   }
 
+  /// `L'utilisateur n'est pas connecté`
+  String get user_not_connected {
+    return Intl.message(
+      'L\'utilisateur n\'est pas connecté',
+      name: 'user_not_connected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pas de connexion internet`
+  String get no_internet_connection {
+    return Intl.message(
+      'Pas de connexion internet',
+      name: 'no_internet_connection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Données hors ligne indisponibles`
+  String get offline_data_not_available {
+    return Intl.message(
+      'Données hors ligne indisponibles',
+      name: 'offline_data_not_available',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Veuillez vous connecter pour avoir accès aux données`
   String get login_sign_in_to_crypto_rates {
     return Intl.message(

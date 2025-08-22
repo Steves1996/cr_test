@@ -60,8 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_success":
             MessageLookupByLibrary.simpleMessage("Connexion réussie"),
         "member_since": MessageLookupByLibrary.simpleMessage("Membre depuis"),
+        "no_internet_connection":
+            MessageLookupByLibrary.simpleMessage("Pas de connexion internet"),
         "no_result_for_search":
             MessageLookupByLibrary.simpleMessage("Aucun résultat trouvé"),
+        "offline_data_not_available": MessageLookupByLibrary.simpleMessage(
+            "Données hors ligne indisponibles"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "profile": MessageLookupByLibrary.simpleMessage("Mes Informations"),
         "rate_current_rate":
@@ -78,6 +82,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Passer ->"),
         "try_again": MessageLookupByLibrary.simpleMessage("Esasyer à nouveau"),
         "try_another_search": MessageLookupByLibrary.simpleMessage(
-            "Essayer avec une autre recherche")
+            "Essayer avec une autre recherche"),
+        "user_not_connected": MessageLookupByLibrary.simpleMessage(
+            "L\'utilisateur n\'est pas connecté")
       };
 }

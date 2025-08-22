@@ -15,6 +15,9 @@
   "try_again": "Esasyer à nouveau",
   "no_result_for_search":"Aucun résultat trouvé",
   "try_another_search":"Essayer avec une autre recherche",
+  "user_not_connected": "L'utilisateur n'est pas connecté",
+  "no_internet_connection": "Pas de connexion internet",
+  "offline_data_not_available":"Données hors ligne indisponibles",
 
 
   "login_sign_in_to_crypto_rates": "Veuillez vous connecter pour avoir accès aux données",

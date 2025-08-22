@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cr/generated/assets.dart';
+import 'package:cr/src/core/global_logic/check_internet_logic/cubit/check_internet_cubit.dart';
 import 'package:cr/src/core/i18n/l10n.dart';
 import 'package:cr/src/core/routing/app_router.dart';
 import 'package:cr/src/features/auth/logic/cubit/login_cubit.dart';
@@ -41,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
+    context.read<CheckInternetCubit>().checkInternet();
     _emailOrPhoneController = TextEditingController();
     _passwordController = TextEditingController();
     super.initState();
@@ -69,6 +71,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 failure: (error) {
                   LoadingDialog.hide(context: context);
+                  ApiErrorDialog.show(context: context, error: error);
+                },
+              );
+            },
+          ),
+
+          BlocListener<CheckInternetCubit, CheckInternetState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (response) {
+                  if (!response) {
+                    Toast.show(
+                      context: context,
+                      message: I18n.of(context).no_internet_connection,
+                      type: ToastType.error,
+                    );
+                  }
+                },
+                failure: (error) {
                   ApiErrorDialog.show(context: context, error: error);
                 },
               );
