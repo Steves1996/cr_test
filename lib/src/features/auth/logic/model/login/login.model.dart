@@ -37,7 +37,7 @@ class LoginResponse {
   final int refreshTokenExpiresIn;
   @JsonKey(name: 'token_type')
   final String tokenType;
-  final LoginData data;
+  final LoginData? data;
 
   LoginResponse({
     required this.responseCode,
@@ -47,7 +47,7 @@ class LoginResponse {
     required this.expiresIn,
     required this.refreshTokenExpiresIn,
     required this.tokenType,
-    required this.data,
+    this.data,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>

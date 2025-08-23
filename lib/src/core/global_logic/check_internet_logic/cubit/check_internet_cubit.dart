@@ -19,7 +19,7 @@ class CheckInternetCubit extends Cubit<CheckInternetState> {
 
   void startInternetCheck() {
     _timer?.cancel();
-    _timer = Timer.periodic(const Duration(seconds: 5), (_) => checkInternet());
+    _timer = Timer.periodic(const Duration(seconds:150), (_) => checkInternet());
   }
 
   Future<void> checkInternet() async {

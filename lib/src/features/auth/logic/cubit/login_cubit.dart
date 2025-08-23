@@ -23,8 +23,8 @@ class LoginCubit extends Cubit<LoginState> {
       final response = await _loginRepository.login(request: request);
       await _secureStorage.setAccessToken(response.token);
       await _secureStorage.setRefreshToken(response.refreshToken);
-      await _secureStorage.setUser(response.data);
-      await _secureStorage.setUserId('${response.data.userId}');
+      await _secureStorage.setUser(response.data!);
+      await _secureStorage.setUserId('${response.data!.userId}');
       emit(LoginState.success(response: response));
     } catch (error) {
       emit(LoginState.failure(error: error.toString()));

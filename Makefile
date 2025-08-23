@@ -35,3 +35,8 @@ build-android:
 build-ios:
 	@echo "Building iOS..."
 	fvm flutter build ios
+
+
+run-all-test:
+	@echo "Run all test..."
+	fvm flutter test --coverage
