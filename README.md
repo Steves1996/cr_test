@@ -1,10 +1,10 @@
-# cr
+# CR - Flutter Project
 
-A new Flutter project.
+A new Flutter project designed as a starting point for building a scalable and maintainable application.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project serves as a foundation for a Flutter application. Follow the steps below to set it up and understand its structure.
 
 ### Environment Configuration
 
@@ -25,6 +25,32 @@ RATE_URL=https://api.example.com/rates
 ### Makefile Commands
 
 The `Makefile` in the project root contains commands to execute various tasks. Refer to the `Makefile` for available commands and their usage.
+
+### Project Architecture
+
+The project follows a modular and organized structure to ensure scalability, maintainability, and code reusability. Below is the architecture breakdown:
+
+### src
+The src directory contains the core codebase of the project, organized into the following subdirectories:
+
+`global_api`: Defines API endpoints used throughout the application, including configurations and utilities for global API calls.
+`i18n`: Manages internationalization and translations to support multiple languages.
+`routing`: Handles navigation and routing logic, defining routes and screen transitions.
+`service`: Manages API communication, including error handling and session management for robust backend interactions.
+`theme`: Controls the application's visual styling, including colors, fonts, and sizes, ensuring a consistent look and feel.
+
+### feature
+
+The `feature` directory organizes the application's views and logic, split into the following subdirectories:
+
+`ui`: Contains the screens or user interface components, defining the visual layout and structure of each view.
+`logic`: Manages the functional logic for each feature, including: Feature-specific API communication.
+Data `models` for structuring feature data.
+`Cubit` (or other state management solutions) for handling state and business logic.
+
+### shared
+The shared directory contains reusable widgets and components designed for use across multiple views and features, promoting code reuse and UI consistency.
+
 
 ### Resources
 
