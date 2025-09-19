@@ -11,7 +11,6 @@ import 'package:cr/src/features/home/ui/widgets/rate_item.dart';
 import 'package:cr/src/features/profile/logic/cubit/profile_cubit.dart';
 import 'package:cr/src/shared/components/dialogs/api_error_dialog.dart';
 import 'package:cr/src/shared/components/forms/input.dart';
-import 'package:cr/src/shared/components/toast.dart';
 import 'package:cr/src/shared/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -141,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _updateCurrentRate(response);
                 },
                 failure: (error) {
+                  ApiErrorDialog.show(context: context, error: error);
                   _handleOfflineMode();
                 },
               );

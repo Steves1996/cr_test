@@ -13,13 +13,13 @@ To configure the environment variables, create a `.env` file in the root directo
 - `CLIENT_ID`: Your client ID for the application.
 - `API_KEY`: Your API key for accessing the required services.
 - `BASE_URL`: The base URL for API requests.
-- `RATE_URL`: The URL for rate-related API requests.
+- `URL_RATE`: The URL for rate-related API requests.
 
 Example `.env` file:
 CLIENT_ID=your_client_id
 API_KEY=your_api_key
 BASE_URL=https://api.example.com
-RATE_URL=https://api.example.com/rates
+URL_RATE=https://api.example.com/rates
 
 
 ### Makefile Commands

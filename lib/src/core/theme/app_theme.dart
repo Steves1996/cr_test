@@ -25,7 +25,7 @@ class AppTheme {
           },
         ),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         elevation: 3.0,
         height: Dimens.bottomNavBarHeight,
         color: colors.surface,
